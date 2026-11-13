@@ -28,6 +28,8 @@ So far with testing seems to work great
 #### X3DAudio HRTF
 The given library is licensed under the GPLv3.
 
+#### [Mhook](http://codefromthe70s.org/mhook24.aspx)
+
 ## IRCAM LISTEN HRTF Database
 
 **Applies to:** `assets/hrtf/*.mhr` (HRTF data derived from subject IRC_1037
@@ -47,8 +49,6 @@ and IRCAM native formats at:
   https://sofacoustics.org/data/database/listen (hrtf)
 - Catalogue entry (SONICOM Ecosystem, Database #78):
   https://ecosystem.sonicom.eu/databases/78
-
-#### [Mhook](http://codefromthe70s.org/mhook24.aspx)
 
 ## X3DAudio HRTF Alma Edition build
 - Based on X3DAudio HRTF by kosumosu/ThreeDeeJay (GPLv3): [https://github.com/kosumosu/x3daudio1_7_hrtf & https://github.com/ThreeDeeJay/X3DAudioHRTF]
