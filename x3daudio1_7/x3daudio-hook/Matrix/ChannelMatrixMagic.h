@@ -4,6 +4,7 @@
 #include "ChannelMatrix.h"
 #include <XAudio2.h>
 #include <limits>
+#include <stdexcept>
 
 inline void embed_sound_id(float * matrix, UINT32 sourceChannels, UINT32 destChannels, sound_id id)
 {
