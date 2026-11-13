@@ -23,8 +23,9 @@ WHAT CHANGED (file -> reason)
   3. Sound tails were cut off             XAPO/HrtfEffect.cpp
        The history length was an integer division that was always 0. Now rounded up.
   4. Delay rounded to whole samples       XAPO/HrtfEffect.cpp
-       The fractional part of the interaural delay is folded into the filter taps once per buffer. Three modes
-       (ini: DelayInterpolation): 0 whole samples (old), 1 linear, 2 = 8-tap windowed sinc (default).
+       The fractional part of the interaural delay is folded into the filter taps once per buffer. Six modes
+       (ini: DelayInterpolation): 0 whole samples (old), 1 linear, 2 = 8-tap Blackman windowed sinc (default),
+       3 = 8-tap Kaiser, 4 = 16-tap Kaiser, 5 = 32-tap Kaiser (more accurate above 12 kHz; constant delay of 3 / 3 / 7 / 15 samples).
   5. asin without clamp                   x3daudio-hook/common.h, hrtf/HrtfData.cpp
        asin argument clamped; elevation / azimuth are sanitized (NaN, infinity, out of range) before indexing.
        Broken .mhr files (truncated, empty tables) are rejected with an error instead of crashing later.
