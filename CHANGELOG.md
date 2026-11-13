@@ -6,7 +6,9 @@
 * Non-HRTF sounds keep full front level in the 5.1 -> stereo fold-down
 * HRTF data is found next to the dll, loaded once, closest sample rate used when none matches
 * HRTF voice is swapped in without a gap, effect no longer leaks, graph cleanup on voice destruction, mutexes
+* DelayInterpolation modes 3-5: Kaiser-windowed sinc with 8 / 16 / 32 taps (flatter response above 12 kHz at the cost of a small constant delay and some CPU)
 * Optional <dll name>.ini (see patches/x3daudio_hrtf.ini.sample)
+* Builds with current Visual Studio 2022 / Windows SDK 10.0.26100 (disasm/cpu.h include order, missing <stdexcept>); verified by a GitHub Actions run
 * See patches/README_PATCHES.txt
 
 ### 2.0 (4 Jul 2017)
@@ -25,4 +27,3 @@
 
 ### 0.9 (23 Jul 2015) Initial public release
 * Works with ArmA 3 and TES V Skyrim, but has some issues
-
