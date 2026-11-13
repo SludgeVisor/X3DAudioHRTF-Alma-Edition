@@ -18,7 +18,8 @@
 //   Crossfade=1           ; 1 = smooth filter/volume changes inside each audio buffer (fixes clicks), 0 = old behaviour
 //   DelayInterpolation=2  ; how the (fractional) left/right ear delay is realised: 0 = whole samples (old behaviour),
 //                         ; 1 = linear interpolation (slightly dulls the highest frequencies),
-//                         ; 2 = 8-tap windowed sinc (within 0.1 dB up to 10 kHz and 1 dB up to 14 kHz at 44.1 kHz; adds a constant 3 sample = 68 us delay to both ears)
+//                         ; 2 = 8-tap Blackman windowed sinc (within 0.1 dB up to 10 kHz and 1 dB up to 14 kHz at 44.1 kHz; adds a constant 3 sample = 68 us delay to both ears)
+//                         ; 3 = 8-tap Kaiser sinc, 4 = 16-tap Kaiser sinc (constant 7 sample delay), 5 = 32-tap Kaiser sinc (constant 15 sample delay)
 namespace hrtf_config
 {
 	struct Settings
