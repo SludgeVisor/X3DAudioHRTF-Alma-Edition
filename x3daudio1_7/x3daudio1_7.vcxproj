@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9043D77E-6054-4CD8-81EC-433F63FFD6BC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>x3daudio1_7</RootNamespace>
+    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OverrideWindowsSDK71A.props" />
+    <Import Project="DirectX-SDK-June-2010.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OverrideWindowsSDK71A.x64.props" />
+    <Import Project="DirectX-SDK-June-2010.x64.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OverrideWindowsSDK71A.props" />
+    <Import Project="DirectX-SDK-June-2010.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="OverrideWindowsSDK71A.x64.props" />
+    <Import Project="DirectX-SDK-June-2010.x64.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(BuildRoot)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)$(BuildRoot)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(BuildRoot)$(Platform)\$(Configuration)\</OutDir>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)$(BuildRoot)$(Platform)\$(Configuration)\</OutDir>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;X3DAUDIO1_7_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;xaudio2-hook</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xapobased.lib;xapofx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;X3DAUDIO1_7_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;xaudio2-hook</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>xapobased.lib;xapofx.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;X3DAUDIO1_7_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;xaudio2-hook</AdditionalIncludeDirectories>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xapobase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;X3DAUDIO1_7_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.;xaudio2-hook</AdditionalIncludeDirectories>
+      <FloatingPointModel>Precise</FloatingPointModel>
+      <WholeProgramOptimization>true</WholeProgramOptimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>true</OmitFramePointers>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>xapobase.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TargetMachine>MachineX64</TargetMachine>
+      <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="disasm\cpu.h" />
+    <ClInclude Include="disasm\disasm.h" />
+    <ClInclude Include="disasm\disasm_x86.h" />
+    <ClInclude Include="disasm\disasm_x86_tables.h" />
+    <ClInclude Include="disasm\misc.h" />
+    <ClInclude Include="HrtfConfig.h" />
+    <ClInclude Include="hrtf\Endianness.h" />
+    <ClInclude Include="hrtf\HrtfData.h" />
+    <ClInclude Include="hrtf\HrtfDataSet.h" />
+    <ClInclude Include="hrtf\HrtfTypes.h" />
+    <ClInclude Include="hrtf\IHrtfData.h" />
+    <ClInclude Include="hrtf\IHrtfDataSet.h" />
+    <ClInclude Include="x3daudio-hook\common.h" />
+    <ClInclude Include="x3daudio-hook\Matrix\ISound3DRegistry.h" />
+    <ClInclude Include="x3daudio-hook\Matrix\Sound3DRegistry.h" />
+    <ClInclude Include="logger.h" />
+    <ClInclude Include="math\base_matrix.hpp" />
+    <ClInclude Include="math\base_matrix4x4.hpp" />
+    <ClInclude Include="math\base_matrix4x4_transfrom.hpp" />
+    <ClInclude Include="math\base_matrix_functions.hpp" />
+    <ClInclude Include="math\base_matrix_operations.hpp" />
+    <ClInclude Include="math\helper.hpp" />
+    <ClInclude Include="math\math_types.h" />
+    <ClInclude Include="math\new_math.hpp" />
+    <ClInclude Include="math\random.hpp" />
+    <ClInclude Include="math\RandomEngine.h" />
+    <ClInclude Include="math\vector.hpp" />
+    <ClInclude Include="math\vector3.hpp" />
+    <ClInclude Include="math\vector3_operations.hpp" />
+    <ClInclude Include="math\vector_functions.hpp" />
+    <ClInclude Include="math\vector_operations.hpp" />
+    <ClInclude Include="mhook\mhook.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="wave\WaveFile.h" />
+    <ClInclude Include="x3daudio-hook\Matrix\MatrixEncodingX3DAudioProxy.h" />
+    <ClInclude Include="x3daudio-hook\Matrix\ChannelMatrixMagic.h" />
+    <ClInclude Include="x3daudio-hook\IX3DAudioProxy.h" />
+    <ClInclude Include="x3daudio-hook\Sequenced\SequencedX3DAudioProxy.h" />
+    <ClInclude Include="xaudio2-hook\common_types.h" />
+    <ClInclude Include="application.h" />
+    <ClInclude Include="xaudio2-hook\graph\EdgeRepository.h" />
+    <ClInclude Include="ISpatializationGlue.h" />
+    <ClInclude Include="xaudio2-hook\graph\ISpatializedDataExtractor.h" />
+    <ClInclude Include="xaudio2-hook\proxy\AlteredEffectChain.h" />
+    <ClInclude Include="xaudio2-hook\ChannelMatrix.h" />
+    <ClInclude Include="xaudio2-hook\graph\AudioGraphMapper.h" />
+    <ClInclude Include="xaudio2-hook\proxy\VoiceMapper.h" />
+    <ClInclude Include="x3daudio-hook\x3daudio_hook.h" />
+    <ClInclude Include="xaudio2-hook\creation_hook.h" />
+    <ClInclude Include="xaudio2-hook\proxy\IVoiceMapper.h" />
+    <ClInclude Include="xaudio2-hook\util.h" />
+    <ClInclude Include="xaudio2-hook\VoiceSends.h" />
+    <ClInclude Include="xaudio2-hook\XAPO\HrtfEffect.h" />
+    <ClInclude Include="xaudio2-hook\proxy\XAudio2MasteringVoiceProxy.h" />
+    <ClInclude Include="xaudio2-hook\proxy\XAudio2Proxy.h" />
+    <ClInclude Include="xaudio2-hook\proxy\XAudio2ProxyFactory.h" />
+    <ClInclude Include="xaudio2-hook\proxy\XAudio2SourceVoiceProxy.h" />
+    <ClInclude Include="xaudio2-hook\proxy\XAudio2SubmixVoiceProxy.h" />
+    <ClInclude Include="xaudio2-hook\proxy\XAudio2VoiceProxy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="disasm\cpu.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="disasm\disasm.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="disasm\disasm_x86.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="disasm\misc.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="hrtf\HrtfData.cpp" />
+    <ClCompile Include="hrtf\HrtfDataSet.cpp" />
+    <ClCompile Include="HrtfConfig.cpp" />
+    <ClCompile Include="x3daudio-hook\Matrix\Sound3DRegistry.cpp" />
+    <ClCompile Include="logger.cpp" />
+    <ClCompile Include="math\RandomEngine.cpp" />
+    <ClCompile Include="mhook\mhook.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="wave\WaveFile.cpp" />
+    <ClCompile Include="x3daudio-hook\Matrix\MatrixEncodingX3DAudioProxy.cpp" />
+    <ClCompile Include="x3daudio-hook\Sequenced\SequencedX3DAudioProxy.cpp" />
+    <ClCompile Include="application.cpp" />
+    <ClCompile Include="xaudio2-hook\graph\AudioGraphMapper.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\VoiceMapper.cpp" />
+    <ClCompile Include="x3daudio-hook\x3daudio_hook.cpp" />
+    <ClCompile Include="xaudio2-hook\creation_hook.cpp" />
+    <ClCompile Include="xaudio2-hook\XAPO\HrtfEffect.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\XAudio2MasteringVoiceProxy.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\XAudio2Proxy.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\XAudio2ProxyFactory.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\XAudio2SourceVoiceProxy.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\XAudio2SubmixVoiceProxy.cpp" />
+    <ClCompile Include="xaudio2-hook\proxy\XAudio2VoiceProxy.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

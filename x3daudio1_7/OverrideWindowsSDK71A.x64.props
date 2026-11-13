@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- The Windows SDK 7.1A include/lib override is only applied when that SDK is installed (older VS setups).
+       Without it (e.g. GitHub Actions runners) the regular Windows 10 SDK is used and the DirectX SDK headers still come first. -->
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="Exists('C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include')">
+    <IncludePath>$(VC_IncludePath);$(UniversalCRT_IncludePath);C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include</IncludePath>
+    <LibraryPath>$(VC_LibraryPath_x64);$(UniversalCRT_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Lib\x64</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="Exists('C:\Program Files (x86)\Microsoft SDKs\Windows\v7.1A\Include')">
+    <ClCompile>
+      <PreprocessorDefinitions>_USING_V110_SDK71_;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
