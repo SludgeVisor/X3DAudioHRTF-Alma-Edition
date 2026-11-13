@@ -19,6 +19,22 @@ namespace
 	// Directions closer than this (radians) use the same filter. The data sets have a resolution of several degrees.
 	const float DIRECTION_EPSILON = 1.0e-4f;
 	const float PI = 3.14159265358979f;
+	const size_t kMaxInterpolationTaps = 32;
+
+	// Modified Bessel function of the first kind, order 0 (power series), for the Kaiser window.
+	float bessel_i0(float x)
+	{
+		const double quarter_x2 = 0.25 * static_cast<double>(x) * static_cast<double>(x);
+		double term = 1.0, sum = 1.0;
+		for (int k = 1; k < 40; k++)
+		{
+			term *= quarter_x2 / (static_cast<double>(k) * static_cast<double>(k));
+			sum += term;
+			if (term < 1.0e-12 * sum)
+				break;
+		}
+		return static_cast<float>(sum);
+	}
 
 	float wrapped_difference(float a, float b)
 	{
@@ -142,8 +158,11 @@ HRESULT HrtfXapoEffect::LockForProcess(UINT32 InputLockedParameterCount, const X
 
 			m_hrtf_data = &m_hrtf_data_set->get_sample_rate_data(used_rate);
 			m_max_frames = std::max<UINT32>(1, pInputLockedParameters[0].MaxFrameCount);
-			m_interpolation_mode = std::min(2, std::max(0, hrtf_config::get().delay_interpolation));
-			m_interpolation_taps = m_interpolation_mode == 2 ? 8u : (m_interpolation_mode == 1 ? 2u : 1u);
+			m_interpolation_mode = std::min(5, std::max(0, hrtf_config::get().delay_interpolation));
+			{
+				static const UINT32 taps_per_mode[] = { 1u, 2u, 8u, 8u, 16u, 32u };
+				m_interpolation_taps = taps_per_mode[m_interpolation_mode];
+			}
 
 			// The interpolation adds (taps - 1) taps to every filter, which reach that much further into the past.
 			m_history_size = m_hrtf_data->get_longest_delay() + m_hrtf_data->get_respoone_length() + (m_interpolation_taps > 2 ? m_interpolation_taps - 2 : 0);
@@ -187,20 +206,34 @@ void HrtfXapoEffect::design_fractional_delay(float fraction, float * coefficient
 
 	default:
 	{
-		// 8-tap Blackman windowed sinc for delay = 3 + fraction (centred, so it needs no future samples).
-		// The constant 3 sample (68 us at 44.1 kHz) of extra delay is the same for both ears.
-		const float delay = 3.0f + fraction;
+		// Windowed sinc for delay = N/2 - 1 + fraction (centred, so it needs no future samples). The constant
+		// N/2 - 1 samples of extra delay (3 / 7 / 15 samples = 68 / 159 / 340 us at 44.1 kHz) is the same for both ears.
+		//   mode 2: 8 taps, Blackman window (the first version)
+		//   mode 3: 8 taps, Kaiser window with a low beta (flatter up to about 18 kHz)
+		//   mode 4: 16 taps, Kaiser
+		//   mode 5: 32 taps, Kaiser
+		const int taps = static_cast<int>(m_interpolation_taps);
+		const bool kaiser = m_interpolation_mode >= 3;
+		const float beta = m_interpolation_mode == 3 ? 3.5f : (m_interpolation_mode == 4 ? 4.0f : 5.0f);
+		const float half = static_cast<float>(taps) * 0.5f;
+		const float delay = half - 1.0f + fraction;
+		const float i0_beta = kaiser ? bessel_i0(beta) : 1.0f;
+
 		float sum = 0.0f;
-		for (int j = 0; j < 8; j++)
+		for (int j = 0; j < taps; j++)
 		{
-			const float t = static_cast<float>(j) - delay; // in (-4; 4)
+			const float t = static_cast<float>(j) - delay; // in (-N/2; N/2)
 			const float x = PI * t;
 			const float sinc = std::fabs(x) < 1.0e-6f ? 1.0f : std::sin(x) / x;
-			const float window = 0.42f + 0.5f * std::cos(PI * t / 4.0f) + 0.08f * std::cos(2.0f * PI * t / 4.0f);
+			float window;
+			if (kaiser)
+				window = bessel_i0(beta * std::sqrt(std::max(0.0f, 1.0f - (t / half) * (t / half)))) / i0_beta;
+			else
+				window = 0.42f + 0.5f * std::cos(PI * t / half) + 0.08f * std::cos(2.0f * PI * t / half);
 			coefficients[j] = sinc * window;
 			sum += coefficients[j];
 		}
-		for (int j = 0; j < 8; j++) // exact gain 1 at DC
+		for (int j = 0; j < taps; j++) // exact gain 1 at DC
 			coefficients[j] /= sum;
 		break;
 	}
@@ -223,7 +256,7 @@ void HrtfXapoEffect::build_filter(const DirectionData & source, Filter & destina
 
 	// y[n] = sum_k h[k] * x(n - whole - fraction - k) and x(t - fraction) ~ sum_j g[j] * x(t - j), therefore the
 	// fractional delay can be folded into the filter once per buffer: taps = h convolved with g.
-	float g[8];
+	float g[kMaxInterpolationTaps];
 	design_fractional_delay(fraction, g);
 
 	const size_t interpolation_taps = m_interpolation_taps;
