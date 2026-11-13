@@ -1,5 +1,5 @@
 # X3DAudio HRTF
-## HRTF for Arma 3, Skyrim, Fallout 4 and potentially other titles using X3dAudio + XAudio2 (including ones running on Unreal Engine 4 and UDK).
+## HRTF for 𝐅.𝐄.𝐀.𝐑. 𝟐: 𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐎𝐫𝐢𝐠𝐢𝐧 and potentially other titles using X3dAudio + XAudio2 (including ones running on Unreal Engine 4 and UDK).
 
 [![Youtube video](https://s15.postimg.org/slkiotxp7/skyrim.png)](https://www.youtube.com/watch?v=jJPpqssMPl0)
 [![Youtube video](http://s24.postimg.org/iozt6p9ut/skyrim_fake_youtube.png)](http://www.youtube.com/watch?v=hsCgaMeTVG0)
@@ -21,22 +21,8 @@ Game hooks both x3daudio1_x.dll, which is simple, and IXAudio2 COM interface, wh
 X3daudio proxy remembers 3D audio position into repository. To mark sound as 3D it sets the first coefficient of the mixing matrix to NaN. And the second one is set to sound ID, so we can later identify it. Let's hope game is not that stupid and won't pass a 1x1 matrix.
 Then, when game calls IXAuido2Voice::SetOutputMatrix(), we check if 1st coeff == NaN which means we have to enable our XAPO DSP effect and pass parameters to it (position, etc).
 
-##### Arma 3
-Works well now. No tricky things there. Has pretty complex audio mixing graph, but nothing wierd. BattleEye must be disabled in order to work.
-
-##### Arma 2
-Has glitches. I haven't investigated them yet. Most sounds were fine, but HMMWV's engine sound was coming from a completely different direction when I was playing. BattleEye must be disabled in order to work.
-
-##### TES V Skyrim (including Special Edition)
-Works perfectly now.
-Skyrim always creates Mastering voice as six-channel. We override it to two-channel.
-For Special Edition use x64 version.
-
-##### Fallout 4
-Works well. Uses the same codebase as Skyrim, so nothing different here. The only difference is x64 platform.
-
-##### Unreal Engine 4 and UDK based games
-Works well. UE does not pass distance to X3DAudio, only direction. The distance between listener and emitter is always 1. UE calculates volume by itself, so the volume is passed in the matrix.
+##### 𝐅.𝐄.𝐀.𝐑. 𝟐: 𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐎𝐫𝐢𝐠𝐢𝐧
+So far with testing seems to work great
 
 ### Legal Stuff
 #### X3DAudio HRTF
