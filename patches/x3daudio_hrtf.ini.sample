@@ -17,6 +17,11 @@ Crossfade=1
 ; How the left/right ear delay (which is rarely a whole number of samples) is realised:
 ;   0 = whole samples only (old behaviour; the delay is wrong by up to 1 sample = 23 us at 44.1 kHz)
 ;   1 = linear interpolation (accurate delay, but dulls high frequencies: about -2.4 dB at 10 kHz, -5 dB at 14 kHz)
-;   2 = 8-tap windowed sinc (best: -0.1 dB at 10 kHz, -1 dB at 14 kHz; adds a constant 68 us delay to both ears,
-;       which does not change the left/right difference)
+;   2 = 8-tap Blackman windowed sinc (default: -0.1 dB at 10 kHz, -1 dB at 14 kHz, -5 dB at 18 kHz in the worst direction;
+;       adds a constant 68 us delay to both ears, which does not change the left/right difference)
+;   3 = 8-tap Kaiser windowed sinc (same 68 us delay and CPU as 2; within 0.2 dB up to 14 kHz, -2 dB at 18 kHz)
+;   4 = 16-tap Kaiser windowed sinc (within 0.1 dB up to 18 kHz; constant 159 us delay, slightly more CPU)
+;   5 = 32-tap Kaiser windowed sinc (flat to above 18 kHz; constant 340 us delay, about 35% more CPU per moving sound than mode 2)
+; The constant delay is applied to both ears equally, so it does not change the left/right difference; it only makes
+; spatialized sounds arrive that much later than non-spatialized ones. Figures are for 44.1 kHz data.
 DelayInterpolation=2
