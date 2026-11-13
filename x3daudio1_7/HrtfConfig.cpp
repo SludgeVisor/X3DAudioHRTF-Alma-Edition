@@ -60,7 +60,7 @@ namespace
 		settings.stereo_source_gain = read_float(ini_path, L"StereoSourceGain", settings.stereo_source_gain, 0.0f, 8.0f);
 		settings.non_hrtf_gain = read_float(ini_path, L"NonHrtfGain", settings.non_hrtf_gain, 0.0f, 8.0f);
 		settings.crossfade = read_float(ini_path, L"Crossfade", settings.crossfade ? 1.0f : 0.0f, 0.0f, 1.0f) >= 0.5f;
-		settings.delay_interpolation = static_cast<int>(read_float(ini_path, L"DelayInterpolation", static_cast<float>(settings.delay_interpolation), 0.0f, 2.0f) + 0.5f);
+		settings.delay_interpolation = static_cast<int>(read_float(ini_path, L"DelayInterpolation", static_cast<float>(settings.delay_interpolation), 0.0f, 5.0f) + 0.5f);
 
 		logger::logRelease("Settings from ", ini_path, ": HrtfGain=", settings.hrtf_gain, " StereoSourceGain=", settings.stereo_source_gain,
 			" NonHrtfGain=", settings.non_hrtf_gain, " Crossfade=", settings.crossfade ? 1 : 0, " DelayInterpolation=", settings.delay_interpolation);
