@@ -28,6 +28,26 @@ So far with testing seems to work great
 #### X3DAudio HRTF
 The given library is licensed under the GPLv3.
 
+## IRCAM LISTEN HRTF Database
+
+**Applies to:** `assets/hrtf/*.mhr` (HRTF data derived from subject IRC_1037
+of the IRCAM LISTEN HRTF Database)
+
+The included HRTF data files are derived from the *Listen HRTF Database*,
+recorded in the IRCAM anechoic room (Paris, France) in 2002–2003, principal
+investigator Olivier Warusfel, Room Acoustics Team, IRCAM.
+
+The data was obtained from the IRCAM LISTEN database and converted to the
+`.mhr` format used by this mod. The original files are distributed in SOFA
+and IRCAM native formats at:
+
+- Original project page (archived):
+  http://recherche.ircam.fr/equipes/salles/listen/
+- SOFA-format mirror (contains `IRC_1037_*` subject files):
+  https://sofacoustics.org/data/database/listen (hrtf)
+- Catalogue entry (SONICOM Ecosystem, Database #78):
+  https://ecosystem.sonicom.eu/databases/78
+
 #### [Mhook](http://codefromthe70s.org/mhook24.aspx)
 
 ## X3DAudio HRTF Alma Edition build
@@ -42,5 +62,42 @@ Portions Copyright (c) 2007, Matt Conover
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+Copyright (c) 2002 IRCAM (Institut de Recherche et Coordination
+Acoustique/Musique). All Rights Reserved.
+
+Use of Materials:
+
+IRCAM hereby grants users permission to use materials available therein
+for any purpose — educational, research or commercial. However, each
+reproduction of any part of the materials must include the copyright
+notice, if it is present. In addition, as a courtesy, if these materials
+are used in published research, this use should be acknowledged in the
+publication as follows:
+
+UMR 9912 - STMS - IRCAM/CNRS/UPMC, 1, place Stravinsky 75004 PARIS
+
+Disclaimer:
+
+IRCAM MAKES NO REPRESENTATION OR WARRANTIES WITH RESPECT TO THE CONTENTS
+HEREOF AND SPECIFICALLY DISCLAIM ANY IMPLIED WARRANTIES OF MERCHANTABILITY
+OR FITNESS FOR ANY PARTICULAR PURPOSE. Further, IRCAM reserves the right
+to revise this database and/or documentation and to make changes from time
+to time in the content hereof without obligation of IRCAM to notify any
+person of such revision or change.
+
+The database is additionally catalogued as **CC BY 4.0 Attribution**
+(https://creativecommons.org/licenses/by/4.0/) by the SONICOM Ecosystem
+(Database #78).
+
+### Requested acknowledgement
+
+IRCAM requests that use of the database be acknowledged. If you use or
+redistribute this project, please preserve this notice file and the credit
+above.
+
+**Contact for the original dataset:** hrtf@ircam.fr
+**Principal investigator:** Olivier Warusfel, Room Acoustics Team, IRCAM,
+1 place Igor Stravinsky, 75004 Paris, France
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
