@@ -18,5 +18,7 @@
 #include <atlbase.h>
 #include <atlstr.h>
 
+#include <stdexcept>
+
 // TODO: reference additional headers your program requires here
 
