@@ -51,6 +51,7 @@ and IRCAM native formats at:
   https://ecosystem.sonicom.eu/databases/78
 
 ## X3DAudio HRTF Alma Edition build
+- 𝐀𝐈 𝐃𝐈𝐒𝐂𝐋𝐎𝐒𝐔𝐑𝐄: All modifications to the original project was done entirely by Claude AI [https://claude. ai]
 - Based on X3DAudio HRTF by kosumosu/ThreeDeeJay (GPLv3): [https://github.com/kosumosu/x3daudio1_7_hrtf & https://github.com/ThreeDeeJay/X3DAudioHRTF]
 - Unofficial patch set: see patches/README_PATCHES.txt and CHANGELOG.md
 - HRTF data: IRC_1037, see hrtf/CREDITS.md
