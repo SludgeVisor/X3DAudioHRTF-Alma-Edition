@@ -83,8 +83,8 @@ private:
 	UINT32 m_buffers_per_history;
 	UINT32 m_history_size;
 	UINT32 m_max_frames;
-	int m_interpolation_mode;      // 0 whole samples, 1 linear, 2 windowed sinc
-	UINT32 m_interpolation_taps;   // 1, 2 or 8
+	int m_interpolation_mode;      // 0 whole samples, 1 linear, 2 8-tap Blackman sinc, 3 8-tap Kaiser sinc, 4 16-tap Kaiser sinc, 5 32-tap Kaiser sinc
+	UINT32 m_interpolation_taps;   // 1, 2, 8, 8, 16 or 32
 
 	// The filters used for the previous buffer (m_current) and, while the direction changes, the ones
 	// to cross-fade to (m_next).
