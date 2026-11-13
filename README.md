@@ -22,7 +22,7 @@ X3daudio proxy remembers 3D audio position into repository. To mark sound as 3D 
 Then, when game calls IXAuido2Voice::SetOutputMatrix(), we check if 1st coeff == NaN which means we have to enable our XAPO DSP effect and pass parameters to it (position, etc).
 
 ##### 𝐅.𝐄.𝐀.𝐑. 𝟐: 𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐎𝐫𝐢𝐠𝐢𝐧
-So far with testing seems to work great
+So far with testing it seems to work great
 
 ### Legal Stuff
 #### X3DAudio HRTF
