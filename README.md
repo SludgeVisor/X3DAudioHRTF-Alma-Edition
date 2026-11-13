@@ -1,4 +1,4 @@
-# X3DAudio HRTF
+# X3DAudio HRTF Alma Edition
 ## HRTF for 𝐅.𝐄.𝐀.𝐑. 𝟐: 𝐏𝐫𝐨𝐣𝐞𝐜𝐭 𝐎𝐫𝐢𝐠𝐢𝐧 and potentially other titles using X3dAudio + XAudio2 (including ones running on Unreal Engine 4 and UDK).
 
 [![Youtube video](https://s15.postimg.org/slkiotxp7/skyrim.png)](https://www.youtube.com/watch?v=jJPpqssMPl0)
