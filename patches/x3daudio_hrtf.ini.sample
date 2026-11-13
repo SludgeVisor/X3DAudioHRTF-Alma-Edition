@@ -1,0 +1,22 @@
+; Copy next to the dll and rename it to match the dll's file name, e.g.
+;   x3daudio1_7.dll       -> x3daudio1_7.ini
+;   x3daudio_hrtf_core.dll -> x3daudio_hrtf_core.ini
+; Everything here is optional. Missing file / missing keys = the defaults below.
+[Audio]
+; Extra gain for every spatialized (HRTF) sound. 1.0 = full level. 0.5 gives mono sources the old -6 dB.
+HrtfGain=1.0
+; Additional gain for stereo sources only. Stereo sources are now averaged instead of summed, so they are exactly
+; as loud as before at 1.0. Use 2.0 for +6 dB.
+StereoSourceGain=1.0
+; Gain of the 5.1 -> stereo fold-down used by everything that is NOT spatialized (music, UI, 2D sounds, reverb).
+; The front speakers now keep their full level (they were scaled by 0.5 before, i.e. -6 dB). 0.5 = old level.
+NonHrtfGain=1.0
+; 1 = smooth the filter and volume changes inside every audio buffer (removes the clicks on fast movement).
+; 0 = old behaviour (hard switch at buffer boundaries).
+Crossfade=1
+; How the left/right ear delay (which is rarely a whole number of samples) is realised:
+;   0 = whole samples only (old behaviour; the delay is wrong by up to 1 sample = 23 us at 44.1 kHz)
+;   1 = linear interpolation (accurate delay, but dulls high frequencies: about -2.4 dB at 10 kHz, -5 dB at 14 kHz)
+;   2 = 8-tap windowed sinc (best: -0.1 dB at 10 kHz, -1 dB at 14 kHz; adds a constant 68 us delay to both ears,
+;       which does not change the left/right difference)
+DelayInterpolation=2
