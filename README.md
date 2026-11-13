@@ -29,6 +29,13 @@ So far with testing seems to work great
 The given library is licensed under the GPLv3.
 
 #### [Mhook](http://codefromthe70s.org/mhook24.aspx)
+
+## X3DAudio HRTF Alma Edition build
+- Based on X3DAudio HRTF by kosumosu/ThreeDeeJay (GPLv3): [https://github.com/kosumosu/x3daudio1_7_hrtf & https://github.com/ThreeDeeJay/X3DAudioHRTF]
+- Unofficial patch set: see patches/README_PATCHES.txt and CHANGELOG.md
+- HRTF data: IRC_1037, see hrtf/CREDITS.md
+- Shim (X3DAudio1_5.dll): see shim_source/
+
 Copyright (c) 2007-2012, Marton Anka
 Portions Copyright (c) 2007, Matt Conover
 
